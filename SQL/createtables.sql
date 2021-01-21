@@ -1,74 +1,75 @@
 CREATE TABLE Iroda  (
-    IrodaAzon NUMBER(4) PRIMARY KEY,
-    HazSzam NUMBER(4),
-    Utca VARCHAR2(50),
-    Varos VARCHAR2(50),
-    IrSzam NUMBER(4));
+    IrodaAzon INT(4) PRIMARY KEY,
+    HazSzam INT(4),
+    Utca VARCHAR(50),
+    Varos VARCHAR(50),
+    IrSzam INT(4));
 
 CREATE TABLE Irodavezeto (
-    Username VARCHAR2(12) PRIMARY KEY, 
-    Email VARCHAR2(50)
-    Password VARCHAR2(100)
-    Titulus VARCHAR2(50),
+    Username VARCHAR(12) PRIMARY KEY, 
+    Email VARCHAR(50),
+    Password VARCHAR(100),
+    Titulus VARCHAR(50),
     SzuletesiDatum DATE,
-    VezNev VARCHAR2(50),
-    KerNev VARCHAR2(50));
+    VezNev VARCHAR(50),
+    KerNev VARCHAR(50));
 
 CREATE TABLE Tanacsado (
-    MnbId NUMBER(12) PRIMARY KEY, 
-    Username VARCHAR2(12)
-    Password VARCHAR2(100)
-    Fizetes NUMBER(9),
-    Vegzettseg VARCHAR2(50),
-    Email VARCHAR2(50),
-    Telefonszam VARCHAR2(50),
-    HazSzam NUMBER(4),
-    Utca VARCHAR2(50),
-    Varos VARCHAR2(50),
-    IrSzam NUMBER(4),
+    MnbId VARCHAR(12) PRIMARY KEY, 
+    Username VARCHAR(12),
+    Password VARCHAR(100),
+	Profilkep BLOB,
+    Fizetes INT(9),
+    Vegzettseg VARCHAR(50),
+    Email VARCHAR(50),
+    Telefonszam VARCHAR(50),
+    HazSzam INT(4),
+    Utca VARCHAR(50),
+    Varos VARCHAR(50),
+    IrSzam INT(4),
     SzuletesiDatum DATE,
-    VezNev VARCHAR2(50),
-    KerNev VARCHAR2(50),
-    Beosztas VARCHAR2(50),
-    Iroda NUMBER(4),
+    VezNev VARCHAR(50),
+    KerNev VARCHAR(50),
+    Beosztas VARCHAR(50),
+    Iroda INT(4),
     FOREIGN KEY(Iroda) REFERENCES Iroda(IrodaAzon));
 
 CREATE TABLE Ugyfel (
-    AdoAzon NUMBER(10) PRIMARY KEY, 
-    Bevetel NUMBER(9),
-    VezNev VARCHAR2(50),
-    KerNev VARCHAR2(50),
+    AdoAzon VARCHAR(10) PRIMARY KEY, 
+    Bevetel INT(9),
+    VezNev VARCHAR(50),
+    KerNev VARCHAR(50),
     SzuletesiDatum DATE,
-    Nem VARCHAR2(10),
-    Tanacsado NUMBER(12),
+    Nem VARCHAR(10),
+    Tanacsado VARCHAR(12),
     FOREIGN KEY(Tanacsado) REFERENCES Tanacsado(MnbId));
 
 CREATE TABLE Szerzodes  (
-    SzerzodesSzam NUMBER(9) PRIMARY KEY, 
-    Tipus VARCHAR2(50),
+    SzerzodesSzam INT(9) PRIMARY KEY, 
+    Tipus VARCHAR(50),
     KotesDatum DATE,
-    Penzintezet VARCHAR2(100),
-    EvesDij NUMBER(9),
-    Ugyfel NUMBER(10),
+    Penzintezet VARCHAR(100),
+    EvesDij INT(9),
+    Ugyfel VARCHAR(10),
     FOREIGN KEY(Ugyfel) REFERENCES Ugyfel(AdoAzon));
 
 CREATE TABLE Iranyit (
-    Iroda NUMBER(4),
-    Irodavezeto VARCHAR2(12),
+    Iroda INT(4),
+    Irodavezeto VARCHAR(12),
     FOREIGN KEY(Iroda) REFERENCES Iroda(IrodaAzon),
     FOREIGN KEY(Irodavezeto) REFERENCES Irodavezeto(Username));
 
 -- segédtáblák létrehozása
 
 CREATE TABLE Telepulesek (
-    Iranyitoszam NUMBER(4),
-    Telepules VARCHAR2(50));
+    Iranyitoszam INT(4),
+    Telepules VARCHAR(50));
 
 CREATE TABLE Utcanevek (
-    Utcanev VARCHAR2(50));
+    Utcanev VARCHAR(50));
 
 CREATE TABLE Penzintezetek (
-    Penzintezet VARCHAR2(100));
+    Penzintezet VARCHAR(100));
 
 CREATE TABLE SzerzodesTipus (
-    Szerzodestipusok VARCHAR2(50));
+    Szerzodestipusok VARCHAR(50));
