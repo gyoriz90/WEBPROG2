@@ -6,12 +6,15 @@
 
 </head>
 <body>
-     <div class="container">
+    <form action="logout.php" method="post">
+	<button type="submit" class="btn btn-primary"> Kilépés </button>
+        </form> 
+    <div class="container">
         <div class="upload-box">
         <div class="row">
-        <div class="col-md-6 upload-left">
+        <div class="col-md-10 upload-left">
              <h2>Add meg a felvenni kívánt tanácsadó adatait:</h2>
-             <form action="upload.php" method="post" enctype="multipart/form-data">
+             <form action="upload_advisor.php" method="post" enctype="multipart/form-data">
      
 	 <div class="form-group">
              <label> Felhasználónév </label>
@@ -53,18 +56,51 @@
              </div>
 	 
 	 <div class="form-group">
-             <label> Irányítószám </label>
-             <input type= "text" name= "zipcode" class="form-control">
+             <label for="zipcode"> Irányítószám </label>
+             <?php
+                $con = mysqli_connect('localhost', 'root','123456');
+                mysqli_select_db($con, 'webprog2gyak');
+                $sql = "SELECT Iranyitoszam FROM telepulesek";
+                $result = mysqli_query($con,$sql);
+                echo "<select name='zipcode'>";
+                while ($row = mysqli_fetch_array($result)) 
+                {
+                echo "<option value='" . $row['Iranyitoszam'] . "'>" . $row['Iranyitoszam'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
              </div>
           
          <div class="form-group">
-             <label> Település </label>
-             <input type= "text" name= "city" class="form-control">
+             <label for="city"> Település </label>
+             <?php
+                $con = mysqli_connect('localhost', 'root','123456');
+                mysqli_select_db($con, 'webprog2gyak');
+                $sql = "SELECT Telepules FROM telepulesek";
+                $result = mysqli_query($con,$sql);
+                echo "<select name='city'>";
+                while ($row = mysqli_fetch_array($result)) 
+                {
+                echo "<option value='" . $row['Telepules'] . "'>" . $row['Telepules'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
              </div>
          
-         <div class="form-group">
-             <label> Utcanév </label>
-             <input type= "text" name= "street" class="form-control">
+          <div class="form-group">
+             <label for="street"> Utcanév </label>
+             <?php
+                $con = mysqli_connect('localhost', 'root','123456');
+                mysqli_select_db($con, 'webprog2gyak');
+                $sql = "SELECT Utcanev FROM utcanevek";
+                $result = mysqli_query($con,$sql);
+                echo "<select name='street'>";
+                while ($row = mysqli_fetch_array($result)) 
+                {
+                echo "<option value='" . $row['Utcanev'] . "'>" . $row['Utcanev'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
              </div>
          
          <div class="form-group">
@@ -115,9 +151,9 @@
     </form>
 	</div>
             
-            <div class="col-md-6 update-right">
+            <div class="col-md-10 update-right">
              <h2>Add meg a frissíteni kívánt tanácsadó felhasználónevét, majd javítsd az adatait!</h2>
-             <form action="update.php" method="post">
+             <form action="update_advisor.php" method="post" enctype="multipart/form-data">
      
 	 <div class="form-group">
              <label> Felhasználónév </label>
@@ -131,7 +167,7 @@
 	 
 	 <div class="form-group">
              <label> Profilkép </label>
-             <input type ="file" name="picture" accept="image/png, image/jpeg" class="form-control">
+             <input type="file" name="image" class="form-control">
              </div>
 	 
 	  <div class="form-group">
@@ -159,18 +195,51 @@
              </div>
 	 
 	 <div class="form-group">
-             <label> Irányítószám </label>
-             <input type= "text" name= "zipcode" class="form-control">
+             <label for="zipcode"> Irányítószám </label>
+             <?php
+                $con = mysqli_connect('localhost', 'root','123456');
+                mysqli_select_db($con, 'webprog2gyak');
+                $sql = "SELECT Iranyitoszam FROM telepulesek";
+                $result = mysqli_query($con,$sql);
+                echo "<select name='zipcode'>";
+                while ($row = mysqli_fetch_array($result)) 
+                {
+                echo "<option value='" . $row['Iranyitoszam'] . "'>" . $row['Iranyitoszam'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
              </div>
           
          <div class="form-group">
-             <label> Település </label>
-             <input type= "text" name= "city" class="form-control">
+             <label for="city"> Település </label>
+             <?php
+                $con = mysqli_connect('localhost', 'root','123456');
+                mysqli_select_db($con, 'webprog2gyak');
+                $sql = "SELECT Telepules FROM telepulesek";
+                $result = mysqli_query($con,$sql);
+                echo "<select name='city'>";
+                while ($row = mysqli_fetch_array($result)) 
+                {
+                echo "<option value='" . $row['Telepules'] . "'>" . $row['Telepules'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
              </div>
          
-         <div class="form-group">
-             <label> Utcanév </label>
-             <input type= "text" name= "street" class="form-control">
+          <div class="form-group">
+             <label for="street"> Utcanév </label>
+             <?php
+                $con = mysqli_connect('localhost', 'root','123456');
+                mysqli_select_db($con, 'webprog2gyak');
+                $sql = "SELECT Utcanev FROM utcanevek";
+                $result = mysqli_query($con,$sql);
+                echo "<select name='street'>";
+                while ($row = mysqli_fetch_array($result)) 
+                {
+                echo "<option value='" . $row['Utcanev'] . "'>" . $row['Utcanev'] . "</option>"; 
+                }
+                echo "</select>";
+                ?>
              </div>
          
          <div class="form-group">
@@ -196,9 +265,9 @@
          <div class="form-group">
              <label for="rank"> Beosztás </label>
              <select name="rank">
-                 <option value="R1">R1</option>
-                 <option value="R2">R2</option>
-                 <option value="R3">R3</option>
+                 <option value="Tanácsadó">Tanácsadó</option>
+                 <option value="Elemző">Elemző</option>
+                 <option value="Kiértékelő">Kiértékelő</option>
              </select>
              </div>
          
@@ -221,9 +290,9 @@
     </form>
 	</div>
             
-            <div class="col-md-6 delete-down">
+            <div class="col-md-10 delete-down">
              <h2>Add meg a törölni kívánt tanácsadó felhasználónevét:</h2>
-             <form action="delete.php" method="post">
+             <form action="delete_advisor.php" method="post">
      
 	 <div class="form-group">
              <label> Felhasználónév </label>
@@ -234,9 +303,7 @@
     </form>
 	</div>
         
-            <form action="logout.php" method="post">
-	<button type="submit" class="btn btn-primary"> Kilépés </button>
-        </form>
+            
             
     </div>
 	</div>
