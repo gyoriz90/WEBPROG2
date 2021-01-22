@@ -1,0 +1,30 @@
+body{
+	background: linear-gradient(rgba(50,50,50, 0.7),rgba(50,50,50, 0.7)), url(connect.jpeg);
+	background-size: cover;
+	background-position: center;
+}
+
+.upload-box{
+	max-width: 800px;
+	float: none;
+	margin: 40px auto;
+	
+}
+
+.form-control{
+	background-color: transparent !important;
+}
+
+.upload-new-customer{
+    background: rgba(211,211,211,0.5);
+    padding: 30px;
+}
+
+.update-new-customer{
+    background: #fff;
+    padding: 30px;
+}
+.delete-customer{
+    background: rgba(240,240,250,0.5);
+    padding: 30px;
+}
