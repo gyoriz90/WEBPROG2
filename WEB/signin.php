@@ -26,7 +26,7 @@ if($num==1)
 			$_SESSION['username']=$username;
 			echo '<script type="text/javascript">'; 
 			echo 'alert("A bejelentkezés tanácsadóként sikeres volt!");';
-			echo 'window.location.href = "home.php";';
+			echo 'window.location.href = "usersite.php";';
 			echo '</script>';
 			exit();
     }
